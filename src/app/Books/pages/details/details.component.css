@@ -1,0 +1,30 @@
+.book-card {
+  width: 300px;
+  margin: 20px;
+}
+
+.book-card mat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.book-card mat-card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.book-card mat-card-subtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+.book-card mat-card-content {
+  margin-top: 10px;
+}
+
+.book-card mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
