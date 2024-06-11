@@ -1,1 +1,20 @@
-<p>book-card works!</p>
+<mat-card class="card m-1">
+  <mat-card-header class="card-header">
+    <mat-card-title>
+      {{ book().Title }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ book().Year }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Autor/Publisher: {{ book().Publisher }}</p>
+    <p>ISBN: {{ book().ISBN }}</p>
+    <p>Cantidad de Páginas: {{ book().Pages }}</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button id="btn-button118" class="btn btn-sm" [routerLink]="['/books/details/',book().id]">
+      Ver Detalles
+      </button>
+  </mat-card-actions>
+</mat-card>
