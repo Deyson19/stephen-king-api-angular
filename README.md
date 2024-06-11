@@ -2,7 +2,7 @@
 
 En esta aplicación se consume un servicio rest con datos de los libros del escritor Stephen King
 
-Api Pública: [https://stephen-king-api.onrender.com/?ref=public_apis]
+Api Pública: [StephenKing-API](https://stephen-king-api.onrender.com/?ref=public_apis)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
 
