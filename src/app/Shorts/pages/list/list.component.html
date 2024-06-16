@@ -1,1 +1,20 @@
-<p>list works!</p>
+@if (mostrarSpinner){
+<app-shared-spinner [mensaje]="mensaje" />
+} @else {
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="text-center text-success">Listado de Shorts</h3>
+    </div>
+  </div>
+  <div class="row">
+    @for (short of shortsList; track short.id) {
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card">
+        <app-short-card [short]="short" />
+      </div>
+    </div>
+    }
+  </div>
+</div>
+}
