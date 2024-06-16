@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { IShorts } from '@interfaces';
+import { ShortTypePipe } from '../../../Pipes/short-type.pipe';
 
 @Component({
   selector: 'app-short-card',
@@ -15,6 +16,7 @@ import { IShorts } from '@interfaces';
     MatIcon,
     CommonModule,
     RouterModule,
+    ShortTypePipe,
   ],
   templateUrl: './short-card.component.html',
 })
