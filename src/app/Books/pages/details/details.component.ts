@@ -7,6 +7,7 @@ import { Spinner } from '@shared/index';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   standalone: true,
@@ -29,13 +30,16 @@ export default class DetailsComponent implements OnInit {
   isLoading = true;
   ngOnInit(): void {
     const id: number = this.activatedRoute.snapshot.params['id'];
-    this.booksService.getById(id).subscribe((resp) => {
-      if (resp.data) {
-        this.book = resp.data;
-        setTimeout(() => {
+    this.booksService.getById(id).subscribe(
+      (resp) => {
+        if (resp.data) {
+          this.book = resp.data;
           this.isLoading = false;
-        }, 1400);
+        }
+      },
+      (isError: HttpErrorResponse) => {
+        this.router.navigate(['/books']);
       }
-    });
+    );
   }
 }

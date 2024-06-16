@@ -1,21 +1,22 @@
-@if (isLoading) {
-<app-shared-spinner [mensaje]="message" />
-} @else {
+@if (book) {
 <mat-card class="book-card">
   <mat-card-header class="card-header">
-    <h4 class="text-center text-primary">Título del libro:{{ book?.Title }}</h4>
+    <h4 class="text-center text-primary">Título del libro:{{ book.Title }}</h4>
     <hr />
-    <h5>Año de Publicación:{{ book?.Year }}</h5>
+    <h5>Año de Publicación:{{ book.Year }}</h5>
   </mat-card-header>
 
   <mat-card-content>
     <div class="row">
       <div class="col">
         <p class="text-primary text-sm-center">Datos Principales</p>
-        <p>Publisher: {{ book?.Publisher }}</p>
-        <p>ISBN: {{ book?.ISBN }}</p>
-        <p>Pages: {{ book?.Pages }}</p>
-        <p>Villanos: {{ book?.villains?.length }}</p>
+        <p>Publisher: {{ book.Publisher }}</p>
+        <p>ISBN: {{ book.ISBN }}</p>
+        <p>Pages: {{ book.Pages }}</p>
+        <p>
+          Villanos:
+          {{ book.villains.length }}
+        </p>
       </div>
       @if (book!.Notes.length >1) {
       <div class="col">
@@ -23,7 +24,7 @@
           Notas:
           <br />
           <mat-list>
-            @for (nota of book?.Notes; track $index) {
+            @for (nota of book.Notes; track $index) {
             <mat-list-item class="list-group-item">
               {{ nota }}
             </mat-list-item>
@@ -31,11 +32,11 @@
           </mat-list>
         </p>
       </div>
-      } @if(book?.villains!.length >0){
+      } @if(book.villains!.length >0){
       <div class="col">
         <p class="text-primary text-sm-center">Información de Villanos</p>
         <mat-list>
-          @for (villano of book?.villains?.splice(0,2); track $index) {
+          @for (villano of book.villains.slice(0,2); track $index) {
           <mat-list-item class="list-group-item">
             {{ villano.name }}
           </mat-list-item>
@@ -46,8 +47,8 @@
     </div>
   </mat-card-content>
   <mat-card-actions align="end">
-    <span class="badge bg-success float-left"
-      >Fecha de Creación: {{ book?.created_at | date }}
+    <span class="badge bg-transparent float-left"
+      >Fecha de Creación: {{ book.created_at | date }}
     </span>
 
     <button mat-flat-button color="primary" routerLink="./books">
@@ -55,4 +56,7 @@
     </button>
   </mat-card-actions>
 </mat-card>
+} @else {
+
+<app-shared-spinner [mensaje]="message" />
 }
