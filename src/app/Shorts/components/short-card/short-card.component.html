@@ -1,1 +1,33 @@
-<p>short-card works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h4 class="text-primary">
+        {{ short().title }}
+      </h4>
+    </mat-card-title>
+    <mat-card-subtitle>{{ short().type }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="m-2">
+    <div class="row justify-content-between">
+      @if (short().originallyPublishedIn) { Publicación original:
+      {{ short().originallyPublishedIn }}
+      }
+    </div>
+
+    <p>Año: {{ short().year }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <span class="badge rounded-pill text-bg-primary"
+      >Fecha de creación: {{ short().created_at | date }}
+    </span>
+
+    <button
+      mat-flat-button
+      color="accent"
+      [routerLink]="['/shorts/details', short().id]"
+    >
+      <mat-icon>info</mat-icon>
+      Ver Más
+    </button>
+  </mat-card-actions>
+</mat-card>
