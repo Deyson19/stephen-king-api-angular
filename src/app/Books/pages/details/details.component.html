@@ -31,7 +31,7 @@
           </mat-list>
         </p>
       </div>
-      }
+      } @if(book?.villains!.length >0){
       <div class="col">
         <p class="text-primary text-sm-center">Información de Villanos</p>
         <mat-list>
@@ -42,6 +42,7 @@
           }
         </mat-list>
       </div>
+      }
     </div>
   </mat-card-content>
   <mat-card-actions align="end">
