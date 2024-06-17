@@ -1,1 +1,49 @@
-<p>details works!</p>
+@if (!isLoading) {
+<h4 class="text-center text-primary text-uppercase">
+  información del Short encontrado
+</h4>
+<div class="card shadow-lg">
+  <div class="card-header">
+    <h5 class="card-title text-center text-success">
+      Nombre del Short: {{ short?.title }}
+    </h5>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <h4 class="card-title">
+          Tipo de Short: {{ short!.type | shorts_type }}
+        </h4>
+        <p class="card-text">
+          Lugar de Publicación Original: {{ short?.originallyPublishedIn }}
+        </p>
+        <p class="card-text">Coleccionado: {{ short?.collectedIn }}</p>
+      </div>
+      <div class="col">
+        <h4 class="card-title">Año de Creación: {{ short!.year }}</h4>
+        <p class="card-text">Notas: {{ short?.notes }}</p>
+        @if (short!.villains.length >1) {
+        <p class="card-text">Villanos: {{ short?.villains }}</p>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    Fecha de Creación del registro:
+    {{ short!.created_at | date : "dd/MM/yyyy" }}
+
+    <button
+      mat-raised-button
+      color="accent"
+      routerLink="/shorts"
+      class="btn btn-success m-2 float-right"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      Regresar
+    </button>
+  </div>
+</div>
+
+}@else {
+<app-shared-spinner [mensaje]="mensaje" />
+}
