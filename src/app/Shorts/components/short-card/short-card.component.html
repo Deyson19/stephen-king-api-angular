@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="shadow-lg m-auto">
   <mat-card-header>
     <mat-card-title>
       <h4 class="text-primary">
@@ -18,18 +18,19 @@
 
     <p>Año: {{ short().year }}</p>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions align="start">
     <span class="badge rounded-pill text-bg-primary"
-      >Fecha de creación: {{ short().created_at | date }}
+      >Fecha Creación: {{ short().created_at | date }}
     </span>
 
     <button
-      mat-flat-button
-      color="accent"
+      mat-raised-button
+      color="primary"
+      class="btn btn-dark"
       [routerLink]="['/shorts/details', short().id]"
     >
       <mat-icon>info</mat-icon>
-      Ver Más
+      Ver
     </button>
   </mat-card-actions>
 </mat-card>
