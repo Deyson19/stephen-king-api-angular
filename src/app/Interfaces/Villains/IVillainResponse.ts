@@ -1,7 +1,7 @@
-import { IVillain } from './IVillain';
+import { IVillainByID } from './IVillain';
 
 export interface IVillainResponse {
-  data: IVillain;
+  data: IVillainByID;
 }
 
 export enum Gender {
