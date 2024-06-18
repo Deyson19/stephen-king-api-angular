@@ -34,6 +34,7 @@ import { IVillain } from '../../../Interfaces/Villains';
 })
 export class VillainsTableComponent implements AfterViewInit {
   private villainsService = inject(VillainsService);
+  tableIsReady = output<boolean>();
 
   displayedColumns: string[] = [
     'id',
@@ -56,6 +57,7 @@ export class VillainsTableComponent implements AfterViewInit {
         this.villains = resp.data;
         this.dataSource = new MatTableDataSource<IVillain>(this.villains);
         this.dataSource.paginator = this.paginator;
+        this.tableIsReady.emit(true);
       }
     });
   }
