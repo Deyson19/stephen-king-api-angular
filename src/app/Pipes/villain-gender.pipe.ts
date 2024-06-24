@@ -10,13 +10,10 @@ export class VillainGenderPipe implements PipeTransform {
     switch (genderName) {
       case Gender.Male:
         return 'Masculino';
-        break;
       case Gender.Female:
         return 'Femenino';
-        break;
       default:
         return 'No especificado';
-        break;
     }
   }
 }
