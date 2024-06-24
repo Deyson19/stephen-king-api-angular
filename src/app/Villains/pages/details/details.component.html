@@ -1,1 +1,57 @@
-<p>details works!</p>
+@if (isLoading) {
+<app-shared-spinner [mensaje]="'Cargando información'" />
+} @else {
+<h3 class="text-center text-success">
+  {{ villain?.name }}
+</h3>
+
+<h4 class="text-primary text-center">
+  Género: {{ villain!.gender! | villain_gender }}
+</h4>
+
+<div class="row">
+  <div class="col-6">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h5 class="card-text">Estado: {{ villain?.status }}</h5>
+        <p class="card-text">Tipo: {{ villain?.types_id }}</p>
+        <p class="card-text">Notas: {{ villain?.notes?.length }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card shadow-lg">
+      <div class="card-body bg-tern">
+        <p class="card-text">
+          Fecha Creación: {{ villain?.created_at | date }}
+        </p>
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="btn btn-outline-primary my-2" routerLink="/villains">
+            Regresar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-list>
+  <div mat-subheader>Notes</div>
+  @for (note of villain?.notes; track note) {
+  <mat-list-item>
+    <mat-icon matListItemIcon>summarize</mat-icon>
+    <div matListItemLine>{{ note }}</div>
+  </mat-list-item>
+  }
+  <mat-divider></mat-divider>
+  <div mat-subheader>Shorts</div>
+  @for (villain of villain?.shorts; track villain) {
+  <mat-list-item>
+    <mat-icon matListItemIcon>note</mat-icon>
+    <div matListItemTitle>{{ villain.title }}</div>
+    <div matListItemLine>{{ villain.url }}</div>
+  </mat-list-item>
+  }
+</mat-list>
+
+}
