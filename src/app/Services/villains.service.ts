@@ -17,6 +17,6 @@ export class VillainsService {
   }
 
   public getById(id: number): Observable<IVillainResponse> {
-    return this.http.get<IVillainResponse>(`${this.baseUrl.book}/${id}`);
+    return this.http.get<IVillainResponse>(`${this.baseUrl.villan}/${id}`);
   }
 }
