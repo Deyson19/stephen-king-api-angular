@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShortsService } from '@services/shorts.service';
 import { SpinnerComponent } from '@shared/spinner/spinner.component';
 import { IShorts } from '@interfaces';
-import { tap } from 'rxjs';
+import { delay, finalize, tap } from 'rxjs';
 import { ShortCardComponent } from '../../components/short-card/short-card.component';
 @Component({
   standalone: true,
@@ -19,17 +19,12 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this._shortsService
       .getAll()
-      .pipe(tap(() => (this.mostrarSpinner = false)))
-      .subscribe((shorts) => {
-        this.shortsList = shorts.data;
-      });
+      .pipe(
+        tap(() => (this.mostrarSpinner = true)),
+        delay(1500),
+        tap((shorts) => (this.shortsList = shorts.data)),
+        finalize(() => (this.mostrarSpinner = false))
+      )
+      .subscribe();
   }
-  displayedColumns: string[] = [
-    'id',
-    'title',
-    'type',
-    'year',
-    'collectedIn',
-    'created_at',
-  ];
 }
