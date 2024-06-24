@@ -1,1 +1,17 @@
-<p>list works!</p>
+<div class="container-fluid">
+  <h3 class="text-center text-primary">Listado de Villanos</h3>
+  <div class="table-responsive">
+    @defer { @if (isLoading ) {
+    <app-shared-spinner [mensaje]="mensaje" />
+    } @else {
+    <app-villains-table (tableIsReady)="tablaLista($event)" />
+    } } @loading (after 80ms; minimum 3s){
+    <div class="d-flex justify-content-center align-items-center">
+      <button class="btn btn-success mx-auto" type="button" disabled>
+        <span class="spinner-grow spinner-border-lg" aria-hidden="true"></span>
+        Loading...
+      </button>
+    </div>
+    }
+  </div>
+</div>
