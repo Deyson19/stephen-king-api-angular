@@ -58,7 +58,9 @@ export class VillainsTableComponent implements AfterViewInit {
         this.dataSource = new MatTableDataSource<IVillain>(this.villains);
         this.dataSource.paginator = this.paginator;
         this.tableIsReady.emit(true);
+        return;
       }
+      this.tableIsReady.emit(false);
     });
   }
 }
