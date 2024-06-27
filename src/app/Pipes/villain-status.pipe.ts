@@ -10,7 +10,7 @@ export class VillainStatusPipe implements PipeTransform {
     if (value === Status.Alive) {
       return 'Vivo';
     } else {
-      return 'Muerto';
+      return value;
     }
   }
 }
